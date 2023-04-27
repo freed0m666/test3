@@ -19,7 +19,7 @@ print "<script>document.location.href='$hostname';</script>";
 }
 
 $mysql = new mysqli("mysql", "root", "qwer", "my_db");
-if ($add==true) {
+if ($add) {
     $random = rand(100,1000);
     $mysql->query("INSERT INTO test(name, b) VALUES ('имяав','Какая то инавформаци $random')");
     unset($random);
@@ -50,4 +50,3 @@ print("<hr>\n<a href=\"$hostname?add=true\">Добавиь случайную з
 $mysql->close();
 
 include("bottom.php");
-?>

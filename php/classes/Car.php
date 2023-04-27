@@ -2,4 +2,3 @@
 class Car{
     public $color;
 }
-?> 

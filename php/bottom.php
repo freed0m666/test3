@@ -1,4 +1,3 @@
 <?php
 print("
-</body></html>"); 
-?>
+</body></html>");
