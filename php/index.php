@@ -4,6 +4,7 @@ $hostname = "http://localhost/";
 //$del=-1;
 //$add=false;
 $p="";
+$inyny=0;
 include('top.php');
 $mysql = new mysqli("mysql","root","qwer","my_db");
 
