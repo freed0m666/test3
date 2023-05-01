@@ -1,12 +1,30 @@
 <?php
 $hostname = "http://localhost/";
-$select=-1;
-$del=-1;
-$add=false;
+//$select=-1;
+//$del=-1;
+//$add=false;
+$p="";
+include('top.php');
+$mysql = new mysqli("mysql","root","qwer","my_db");
 
-//      РАБОТА С КЛАССАМИ
-//      РАБОТА С КЛАССАМИ
+if (isset($_GET['p'])) {
+    $p=strval($_GET['p']);
+    if ($p=='add') {
+        print("add");
 
+    }
+} else {
+    $result = $mysql->query("SELECT `id`,`name` FROM test");
+    if($result){
+        while($row = $result->fetch_assoc()){
+            print("<a href=\"$hostname?sel=" . $row["id"] . "\">" . $row["id"] . " " . $row["name"] . "</a><br>\n");
+        }
+    }
+}
+print("норм");
+$mysql->close();
+
+/*
 if (isset($_GET['sel'])) {
     $select = intval($_GET['sel']);
 }
@@ -37,7 +55,7 @@ if ($select == -1) {
             print("<a href=\"$hostname?sel=" . $row["id"] . "\">" . $row["id"] . " " . $row["name"] . "</a><br>\n");
         }
     }
-print("<hr>\n<a href=\"$hostname?add=true\">Добавиь случайную запись</a>");
+print("<hr>\n<a href=\"$hostname?add\">Добавиь запись</a>");
 } else if ($select>0) {
     $result = $mysql->query("SELECT * FROM test WHERE id=$select");
     if($result){
@@ -48,5 +66,5 @@ print("<hr>\n<a href=\"$hostname?add=true\">Добавиь случайную з
     print("\n<hr><a href =\"$hostname\">HOME</a> <a href=\"$hostname?d=$select\">Удалить</a>");
 }
 $mysql->close();
-
+*/
 include("bottom.php");
